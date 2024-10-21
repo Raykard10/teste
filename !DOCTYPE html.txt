@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha e Pague</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .option {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .option:hover {
+            background-color: #e0e0e0;
+        }
+        .hidden {
+            display: none;
+        }
+        #payButton {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        #payButton:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Escolha uma opção</h1>
+    <div id="options">
+        <div class="option" onclick="chooseOption(1)">Opção 1</div>
+        <div class="option" onclick="chooseOption(2)">Opção 2</div>
+        <div class="option" onclick="chooseOption(3)">Opção 3</div>
+    </div>
+
+    <div id="paymentSection" class="hidden">
+        <h2>Você escolheu a Opção <span id="chosenOption"></span></h2>
+        <p>Para acessar o conteúdo, você precisa realizar o pagamento.</p>
+        <button id="payButton" onclick="processPayment()">Pagar Agora</button>
+    </div>
+
+    <script>
+        let selectedOption = null;
+
+        function chooseOption(option) {
+            selectedOption = option;
+            document.getElementById('chosenOption').innerText = option;
+            document.getElementById('options').classList.add('hidden');
+            document.getElementById('paymentSection').classList.remove('hidden');
+        }
+
+        function processPayment() {
+            // Aqui você pode integrar com um sistema de pagamento, como PayPal ou Stripe
+            alert('Redirecionando para a página de pagamento para a Opção ' + selectedOption);
+            // Exemplo de redirecionamento:
+            window.location.href = "https://seu-sistema-de-pagamento.com";
+        }
+    </script>
+
+</body>
+</html>
